@@ -22,9 +22,9 @@ def add_points(user_id):
 
 
 # 🎮 START
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def start(pdate, context):
     await update.message.reply_text(
-        "🎮 Benvenuto nel GAME delle SFIDE!\n\n"
+        "🎮 Benvenuto nel GAME delle SFIDE!\nUsa/sfida e /punti"
         "👉 Usa /sfida per giocare\n"
         "👉 Usa /punti per vedere i punti"
     )
