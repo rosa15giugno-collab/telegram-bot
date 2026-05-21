@@ -11,6 +11,7 @@ sfide = [
     "👀 SFIDA: manda un emoji hot",
     "🎙️ SFIDA: fai un complimento provocante"
 ]
+punti {}
 
 async def sfida(update: Update, context: ContextTypes.DEFAULT_TYPE):
     scelta = random.choice(sfide)
