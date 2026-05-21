@@ -18,9 +18,7 @@ async def sfida(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(scelta)
 
 async def punti_cmd(update, context):
-    user_id = update.effective_user.id
-    punti_user = punti.get(user_id,0)
-    await update.message.reply_text(f"🏆 Hai {punti_user} punti")
+    await update.message.reply_text("TEST OK")
     
 
 app = ApplicationBuilder().token(TOKEN).build()
