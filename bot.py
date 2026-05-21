@@ -51,7 +51,7 @@ async def punti_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 # 🚀 BOT SETUP
-app = Application.builder().token("INSERISCI_TOKEN_QUI").build()
+app = Application.builder().token("8699109262:AAFtEHxvpXYRikxPOzHCQKRRbzR01SEIRL0").build()
 
 app.add_handler(CommandHandler("start", start))
 app.add_handler(CommandHandler("sfida", sfida))
