@@ -13,6 +13,11 @@ sfide = [
 ]
 punti {}
 
+async def start(update, context):
+    await update.message.reply_text(
+        "🎮 Benvenuto nel gioco delle sfide!\n\nUsa /sfida per giocare 😏\nUsa /punti per vedere i tuoi punti 🏆"
+    )
+
 async def sfida(update: Update, context: ContextTypes.DEFAULT_TYPE):
     scelta = random.choice(sfide)
     await update.message.reply_text(scelta)
@@ -22,6 +27,8 @@ async def punti_cmd(update, context):
     
 
 app = ApplicationBuilder().token(TOKEN).build()
+
+app.add_handler(CommandHandler("start", start))
 
 app.add_handler(CommandHandler("sfida", sfida))
 
