@@ -17,9 +17,16 @@ async def sfida(update: Update, context: ContextTypes.DEFAULT_TYPE):
     scelta = random.choice(sfide)
     await update.message.reply_text(scelta)
 
+async def punti_cmd(update, context):
+    user_id = update.effective_user.id
+    await update.message.reply_text(f"🏆 Hai {punti.get(user_id, 0)} punti")
+    
+
 app = ApplicationBuilder().token(TOKEN).build()
 
 app.add_handler(CommandHandler("sfida", sfida))
+
+app.add_handler(CommandHandler("punti", punti_cmd))
 
 print("Bot avviato 😎")
 
