@@ -1,60 +1,25 @@
-import random
 from telegram import Update
-from telegram.ext import Application, CommandHandler, ContextTypes
+from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+import random
 
-# 🎲 SFIDE
+TOKEN = "8699109262:AAFtEHxvpXYRikxPOzHCQKRRbzR01SEIRL0"
+
 sfide = [
-    "Fai un complimento a qualcuno 😏",
-    "Racconta una figuraccia 😂",
-    "Manda la tua emoji del giorno 🔥",
-    "Scrivi 'sono il re/la regina del gruppo 👑'",
-    "Racconta un segreto innocente 👀"
+    "😈 SFIDA: manda un vocale sensuale",
+    "🔥 SFIDA: tagga chi baceresti ora",
+    "💋 SFIDA: descrivi il tuo tipo ideale",
+    "👀 SFIDA: manda un emoji hot",
+    "🎙️ SFIDA: fai un complimento provocante"
 ]
 
-# 🏆 PUNTI
-punti = {}
-
-def get_points(user_id):
-    return punti.get(user_id, 0)
-
-def add_points(user_id):
-    punti[user_id] = get_points(user_id) + 1
-
-
-# 🎮 START
-async def start(pdate, context):
-    await update.message.reply_text(
-        "🎮 Benvenuto nel GAME delle SFIDE!\nUsa/sfida e /punti"
-        "👉 Usa /sfida per giocare\n"
-        "👉 Usa /punti per vedere i punti"
-    )
-
-
-# 🎲 SFIDA
 async def sfida(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    user_id = update.effective_user.id
-    sfida = random.choice(sfide)
+    scelta = random.choice(sfide)
+    await update.message.reply_text(scelta)
 
-    add_points(user_id)
+app = ApplicationBuilder().token(TOKEN).build()
 
-    await update.message.reply_text(
-        f"🎲 SFIDA ATTIVA!\n\n{sfida}\n\n🏆 +1 punto!"
-    )
-
-
-# 🏆 PUNTI
-async def punti_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    user_id = update.effective_user.id
-    await update.message.reply_text(
-        f"🏆 Hai {get_points(user_id)} punti"
-    )
-
-
-# 🚀 BOT SETUP
-app = Application.builder().token("8699109262:AAFtEHxvpXYRikxPOzHCQKRRbzR01SEIRL0").build()
-
-app.add_handler(CommandHandler("start", start))
 app.add_handler(CommandHandler("sfida", sfida))
-app.add_handler(CommandHandler("punti", punti_cmd))
+
+print("Bot avviato 😎")
 
 app.run_polling()
